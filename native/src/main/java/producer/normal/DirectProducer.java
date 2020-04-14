@@ -11,11 +11,14 @@ import java.util.concurrent.TimeoutException;
 public class DirectProducer {
 
     private final static String EXCHANGE_NAME = "direct_log";
-
     public static void main(String[] args) throws IOException, TimeoutException {
         // 创建连接工厂
         ConnectionFactory cf = new ConnectionFactory();
-        cf.setHost("127.0.0.1");
+        // 工厂属性配置，列举如下几个，其他属性自行点击ConnectionFactory进去查看
+        cf.setHost("127.0.0.1");// ip
+        cf.setPort(5672);// 端口
+        cf.setUsername("guest");// 用户名
+        cf.setPassword("guest");// 密码
         // 创建连接
         Connection con = cf.newConnection();
         // 创建信道

@@ -11,7 +11,6 @@ import java.util.concurrent.TimeoutException;
  */
 public class DirectConsumerError {
     private final static String EXCHANGE_NAME = "direct_log";
-
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = cf.newConnection();

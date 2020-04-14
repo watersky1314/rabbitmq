@@ -14,7 +14,7 @@ public class ProducerConfirmAsync {
     public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = cf.newConnection();
-        // 连接关闭监听，一般用于重连机制
+        // 监听连接关闭事件，一般用于重连机制
         con.addShutdownListener(new ShutdownListener() {
             @Override
             public void shutdownCompleted(ShutdownSignalException cause) {
@@ -25,7 +25,7 @@ public class ProducerConfirmAsync {
         channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
         // 将信道设置为发送方确认
         channel.confirmSelect();
-        // 信道关闭监听
+        // 监听信道事件
         channel.addShutdownListener(new ShutdownListener() {
             @Override
             public void shutdownCompleted(ShutdownSignalException cause) {
@@ -34,7 +34,7 @@ public class ProducerConfirmAsync {
         });
         // deliveryTag:代表消息在信道中的唯一一次投递，单调递增
         // multiple:是否批处理，默认false
-        // 已被投递的消息监听
+        // 监听已被投递的消息
         channel.addConfirmListener(new ConfirmListener() {
             @Override
             public void handleAck(long deliveryTag, boolean multiple) {
@@ -47,7 +47,7 @@ public class ProducerConfirmAsync {
             }
         });
 
-        // 未被投递到队列的消息监听
+        // 监听未被投递到队列的消息
         channel.addReturnListener(new ReturnListener() {
             @Override
             public void handleReturn(int replyCode, String replyText, String exchange, String routingKey,
