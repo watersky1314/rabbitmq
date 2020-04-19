@@ -1,0 +1,26 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.gitignore
+.idea/$PROJECT_FILE$
+.idea/.gitignore
+.idea/compiler.xml
+.idea/misc.xml
+.idea/qaplug_profiles.xml
+.idea/uiDesigner.xml
+.idea/vcs.xml
+native/target/classes/producer/confirm/ProducerConfirm.class
+native/target/classes/producer/confirm/ProducerConfirmAsync$1.class
+native/target/classes/producer/confirm/ProducerConfirmAsync$2.class
+native/target/classes/producer/confirm/ProducerConfirmAsync.class
+native/target/classes/producer/normal/TopicProducer.class
+native/target/generated-sources/
+rabbitmq.iml
+native/src/main/resources/
+native/src/test/
