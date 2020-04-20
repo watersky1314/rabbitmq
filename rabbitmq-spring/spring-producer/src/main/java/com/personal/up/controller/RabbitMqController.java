@@ -1,6 +1,7 @@
 package com.personal.up.controller;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -11,8 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/rabbitmq")
-@Slf4j
 public class RabbitMqController {
+
+    private Logger logger = LoggerFactory.getLogger(RabbitMqController.class);
 
     public final RabbitTemplate rabbitTemplate;
 
@@ -28,7 +30,7 @@ public class RabbitMqController {
         try {
             for(int i=0;i<3;i++){
                 String str = "Fanout,the message_"+i+" is : "+message;
-                log.info("**************************Send Message:["+str+"]");
+                logger.info("**************************Send Message:["+str+"]");
                 rabbitTemplate.send("fanout-exchange","",
                         new Message(str.getBytes(),new MessageProperties()));
 

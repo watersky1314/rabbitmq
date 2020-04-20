@@ -16,7 +16,7 @@
     <mvc:annotation-driven
             content-negotiation-manager="contentNegotiationManager" />
 
-    <context:component-scan base-package="com.personal.up">
+    <context:component-scan base-package="com.personal.up.controller">
         <context:include-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
